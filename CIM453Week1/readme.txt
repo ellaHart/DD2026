@@ -1,0 +1,1 @@
+This is week one of this class. It is currently raining outside, I am freazing. I wish I brought a sweatshirt with me but at least my outfit slays.

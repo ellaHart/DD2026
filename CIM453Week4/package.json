@@ -1,0 +1,20 @@
+{
+  "name": "expresstest",
+  "version": "1.0.0",
+  "description": "our first express server",
+  "keywords": [
+    "testing",
+    "in",
+    "class"
+  ],
+  "license": "MIT",
+  "author": "Ella Hartsell",
+  "type": "\"commonjs\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
