@@ -44,25 +44,27 @@ app.get("/images/sample.jpg", (req, res) => {
   res.sendFile(filePath);
 });
 
-//HtTP METHODS GET POST DELETE
+
+// HTTP METHODS GET POST PUT DELETE
+
 //GET
 app.get("/api/items", (req, res) => {
-    res.send("this is a get responce from /api/items");
+res.send("this is a get response from /api/items");
 });
 
 //POST
 app.post("/api/items", (req, res) => {
-    res.send("this is a post responce from /api/items");
+res.send("this is a post response from /api/items");
 });
 
 //PUT
 app.put("/api/items/:id", (req, res) => {
-    res.send("this is a put responce from /api/items/:id");
+res.send(`this is a put response from /api/items/`);
 });
 
 //DELETE
-app.delete("/api/times", (req, res) => {
-    res.send("this is a delete responce from /api/items");
+app.delete("/api/items/:id", (req, res) => {
+res.send(`this is a delete response from /api/items/`);
 });
 
 // start the server
