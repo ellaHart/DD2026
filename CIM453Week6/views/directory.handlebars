@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each people}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.first_name}}</td>
+      <td>{{this.last_name}}</td>
+      <td>{{this.email}}</td>
+      <td>
+        <a href="/directory/{{this.id}}">View Details</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
