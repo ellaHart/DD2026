@@ -22,6 +22,8 @@ app.use(express.static(path.join(__dirname, "static")));
 
 //data 
 const directory = require("./data/directory.json");
+const { dir } = require("console");
+const { title } = require("process");
 console
 
 // generate routes
@@ -66,8 +68,44 @@ app.delete("/api/items/:id", (req, res) => {
 
 //Directory route
 
-app.get("/directory/:id", (req, res) => {
+app.get("/directory", (req, res) => {
   res.render("directory", { people: directory })
+});
+
+app.get("/person/add", (req, res) => {
+  console.log(req.person);
+  console.log(req.query);
+
+  directory.push({
+  id: parseInt(req.query.id),
+  first_name: req.query.first_name,
+  last_name: req.query.last_name,
+  email: req.query.email,
+  address: req.query.address,
+  city: req.query.city,
+  state: req.query.state,
+  zip: req.query.zip
+});
+console.log(directory);
+
+  res.send("add-person");
+});
+
+app.get("/directory/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  let person = directory.find((p) => p.id === parseInt(id));
+
+  // Optional safety check (recommended!)
+  if (!person) {
+    return res.status(404).send("Person not found");
+  }
+
+  res.render("person", {
+    person: person,
+    title: `${person.first_name} ${person.last_name}`
+  });
 });
 
 // start the server
