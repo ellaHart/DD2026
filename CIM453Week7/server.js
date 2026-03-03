@@ -46,6 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 // generate routes
 app.get("/", (req, res) => {
   // Homepage route
+  res.render("home", { title: "Welcome to the Travel Site!" });
 });
 
 // generate routes to populate destinations page
@@ -66,9 +67,11 @@ app.post("/destinations", async (req, res) => {
 // generate routes to display destinations page
 app.get("/destinations", async (req, res) => {
   // code to retrieve destinations from the database and render the destinations page
-  const destinations = await Destination.find();
+  // .lean() is a method in Mongoose that is used to optimize query performance by returning plain JavaScript objects instead of Mongoose documents. When you use .lean(), Mongoose skips the process of creating full Mongoose document instances, which can be more efficient when you only need to read data and don't require the additional functionality provided by Mongoose documents. This can lead to faster query execution and reduced memory usage, especially when dealing with large datasets.
+
+  const destinations = await Destination.find().lean();
   res.render("destinations", { destinations });
-}
+});
 
 // start the server
 app.listen(port, () => {

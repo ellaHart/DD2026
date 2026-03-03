@@ -1,0 +1,17 @@
+<h1>{{title}}</h1>
+<ul>
+    {{#each destinations}}
+    <div class="row">
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      <a class=""bindings" href="/destinations/{{this._id}}">View Details</a>  
+    </div>
+  </div>
+        {{this.name}} {{this.description}}
+        <br>
+    {{/each}}
