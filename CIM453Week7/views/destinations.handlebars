@@ -1,17 +1,24 @@
-<h1>{{title}}</h1>
-<ul>
-    {{#each destinations}}
-    <div class="row">
-    <div class="col">
-      Column
+{{!-- https://getbootstrap.com/docs/5.3/layout/grid/ --}}
+{{!-- https://getbootstrap.com/docs/5.3/components/buttons/ --}}
+{{!-- https://getbootstrap.com/docs/5.3/content/images/ --}}
+<h1 class="font-64 funnel-display-bold">{{title}}</h1>
+  {{#each destinations}}
+<div class="row">
+    <div class="col col-md-3">
+      <h2 class="font-32 funnel-display-medium">{{this.name}}</h2>
+      <img src="{{this.image}}" class="img-fluid square" alt="{{this.name}} image">
+      {{!-- image here --}}
     </div>
-    <div class="col">
-      Column
+    <div class="col col-md-7 font-24 mt-5">
+      {{!-- Description Here --}}
+      {{this.description}}
     </div>
-    <div class="col">
-      <a class=""bindings" href="/destinations/{{this._id}}">View Details</a>  
+    <div class="col col-md-2 flex-column d-flex justify-content-center">
+      {{!-- Link Here --}}
+      <a class="btn btn-primary" href="/destinations/{{this._id}}"> View Details </a>
     </div>
   </div>
-        {{this.name}} {{this.description}}
-        <br>
-    {{/each}}
+
+     
+    <br>
+  {{/each}}

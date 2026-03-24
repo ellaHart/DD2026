@@ -1,1 +1,42 @@
-<h1>Welcome to {{title}}</h1>
+<h1>{{title}}</h1>
+<p>{{description}}</p>
+
+<div id="carouselHome" class="carousel slide">
+  <div class="carousel-indicators">
+    {{#each galleryImages}}
+    <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="{{@index}}" {{#if @first}}class="active" aria-current="true"{{/if}} aria-label="Slide {{@index}}"></button>
+    {{/each}}
+  </div>
+  <div class="carousel-inner">
+    {{#each galleryImages}}
+    <div class="carousel-item {{#if @first}}active{{/if}}">
+      <img class="widescreen d-block w-100" src="{{url}}" alt="{{caption}}">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{caption}}</h5>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="row mt-5">
+  {{#each destinations}}
+  <div class="col col-4 mb-4">
+    <div class="card h-100">
+      <img src="{{image}}" class="card-img-top img-fluid square" alt="{{name}} image">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{name}}</h5>
+        <a href="/destinations/{{_id}}" class="btn btn-primary mt-auto">View Details</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
