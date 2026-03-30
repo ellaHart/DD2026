@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "69c2ed9187af776704a4e610"
+  },
+  "url": "/images/home1.jpg",
+  "caption": "Discover amazing destinations around the country.",
+  "gallery": {
+    "$oid": "69c2ed0587af776704a4e60e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2ee12c2f2a5d0f2deaa57"
+  },
+  "url": "/images/home2.jpg",
+  "caption": "Adventure Awaits",
+  "gallery": {
+    "$oid": "69c2ed0587af776704a4e60e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2ee1ac2f2a5d0f2deaa58"
+  },
+  "url": "/images/home3.jpg",
+  "caption": "Experience the best destinations in comfort.",
+  "gallery": {
+    "$oid": "69c2ed0587af776704a4e60e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2ee21c2f2a5d0f2deaa59"
+  },
+  "url": "/images/home4.jpg",
+  "caption": "Uncover breathtaking places off the beaten path.",
+  "gallery": {
+    "$oid": "69c2ed0587af776704a4e60e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2ee27c2f2a5d0f2deaa5a"
+  },
+  "url": "/images/home5.jpg",
+  "caption": "Start planning your dream trip today.",
+  "gallery": {
+    "$oid": "69c2ed0587af776704a4e60e"
+  },
+  "__v": 0
+}]

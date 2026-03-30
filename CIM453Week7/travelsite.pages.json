@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "69bc3bbcfbe37a5053518788"
+  },
+  "slug": "about-us",
+  "name": "About Us",
+  "description": "/images/",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2ef1ac2f2a5d0f2deaa5c"
+  },
+  "slug": "home",
+  "name": "Welcome to Travel Site",
+  "description": "Explore the world with us",
+  "__v": 0
+}]

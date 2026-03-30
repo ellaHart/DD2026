@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "69a70d1cbbd09b1e90874e6a"
+  },
+  "page": "miami",
+  "name": "Miami",
+  "description": "Miami is a vibrant coastal city known for its tropical climate, Latin American influences, and energetic culture. Visitors can explore colorful street art in Wynwood, dine in Little Havana, shop in Brickell, or relax along scenic waterfront parks. With year-round sunshine and a dynamic mix of cultures, Miami offers a lively urban experience in South Florida.",
+  "__v": 0,
+  "image": "/images/miami1.jpg"
+},
+{
+  "_id": {
+    "$oid": "69a7105824c5e09bcee6af94"
+  },
+  "page": "chicago",
+  "name": "Chicago",
+  "description": "Chicago is a major Midwestern city known for its bold architecture, cultural institutions, and lakeside skyline along Lake Michigan. Visitors can walk the Chicago Riverwalk, explore Millennium Park, or take in panoramic views from the Willis Tower Skydeck. From world-class museums to famous deep-dish pizza, Chicago blends big-city energy with rich history.",
+  "__v": 0,
+  "image": "/images/chicago1.jpg"
+},
+{
+  "_id": {
+    "$oid": "69a715bd24c5e09bcee6af95"
+  },
+  "page": "sanfran",
+  "name": "San Francisco",
+  "description": "San Francisco is a coastal destination in San Francisco known for its iconic landmarks like the Golden Gate Bridge, historic cable cars, and the lively atmosphere of Fisherman's Wharf. Visitors can explore the rich history of Alcatraz Island, enjoy stunning waterfront views, and experience a diverse mix of culture, cuisine, and entertainment.",
+  "__v": 0,
+  "image": "/images/sanfran1.jpg"
+}]

@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "69a9b702848437b8714f9c1c"
+  },
+  "name": "South Beach",
+  "destination": {
+    "$oid": "69a70d1cbbd09b1e90874e6a"
+  },
+  "image": "/images/miami2.jpg",
+  "cost": 0,
+  "__v": 0,
+  "description": "South Beach is a vibrant beachfront neighborhood in Miami Beach known for its iconic Art Deco architecture, lively nightlife, and crystal-clear waters.\nVisitors can stroll along Ocean Drive, relax on white sand beaches, and enjoy a mix of trendy restaurants, shopping, and nonstop entertainment."
+},
+{
+  "_id": {
+    "$oid": "69bc1dce8713e0e6507d4cfa"
+  },
+  "name": "Miami to Key West Day Trip",
+  "destination": {
+    "$oid": "69a70d1cbbd09b1e90874e6a"
+  },
+  "image": "/images/miami3.jpg",
+  "cost": 39.99,
+  "__v": 0,
+  "description": "Soak up the waterfront beauty of the Florida Keys—and make getting there from Miami smooth and hassle-free—on this full-day sightseeing tour, complete with round-trip transit. Following hotel pickup, travel aboard your comfortable, air-conditioned vehicle, with live narration to introduce the region's highlights and history. Upon arrival in Key West, have half a day to explore independently—or upgrade to snorkel, tour by glass-bottomed boat, and beyond."
+},
+{
+  "_id": {
+    "$oid": "69bc3c7efbe37a505351878a"
+  },
+  "name": "Tiki Bar Boat Cruise",
+  "description": "Bring your coffee (or Mimosas!)… And just relax… Make a memory! Catch a breathtaking sunrise while cruising on the cool peaceful morning waters of the Biscayne Bay. Perfect for couples, close friends or meeting new friends. Start your day off right. All cruises are BYOB. We let you bring on whatever you’d like! And don’t be surprised if you see a dolphin or two. Times may vary.",
+  "image": "/images/miami4.jpg",
+  "cost": 350,
+  "destination": {
+    "$oid": "69a70d1cbbd09b1e90874e6a"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2adafc2f2a5d0f2deaa3b"
+  },
+  "name": "Portillo's Hot Dogs",
+  "description": "Portillo's is home to America's favorite Italian beef, burgers, salads, Chicago-style hot dogs, and chocolate cake!",
+  "image": "/images/chicago2.jpg",
+  "cost": 3.99,
+  "destination": {
+    "$oid": "69a7105824c5e09bcee6af94"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2b13ac2f2a5d0f2deaa44"
+  },
+  "name": "Navy Pier",
+  "description": "Navy Pier is a popular waterfront destination in Chicago, offering stunning views of Lake Michigan alongside attractions like the iconic Centennial Wheel. Visitors can enjoy rides, dining, shopping, seasonal events, and fireworks, making it a must-visit spot for both tourists and locals.",
+  "image": "/images/chicago3.jpg",
+  "cost": 19.99,
+  "destination": {
+    "$oid": "69a7105824c5e09bcee6af94"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2b1c2c2f2a5d0f2deaa45"
+  },
+  "name": "Architecture Boat Tour",
+  "description": "Throughout our 90 minutes signature cruise, one of our award-winning docents will present more than 50 skyscrapers, bascule bridges, and historic sites. Each year thousands of architecture lovers travel to the City of Chicago to board our enthralling river tour!",
+  "image": "/images/chicago4.jpg",
+  "cost": 76.59,
+  "destination": {
+    "$oid": "69a7105824c5e09bcee6af94"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2b28dc2f2a5d0f2deaa46"
+  },
+  "name": "Trolly Tour",
+  "description": "Ride a trolly to see San Francisco's most famous landmarks with a hop-on hop-off bus pass valid for 24 or 48 hours. Visit big-name attractions such as Pier 39, the Palace of Fine Arts, and Union Square. Explore at your own pace, hopping off at any of 17 stops. Add-on options include Aquarium by the Bay admission, a digital Chinatown walking tour, a panoramic sunset tour, and a half-day wine tour",
+  "image": "/images/sanfran2.jpg",
+  "cost": 56.99,
+  "destination": {
+    "$oid": "69a715bd24c5e09bcee6af95"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2b308c2f2a5d0f2deaa47"
+  },
+  "name": "Yosemite Day Tour",
+  "description": "Known for its steep granite cliffs, waterfalls, towering sequoia groves, and diversity of wildlife, Yosemite National Park is something you don’t want to miss. On this small group day trip, you can leave the logistics to a tour guide so all you have to do is enjoy the great outdoors. You have both guided sightseeing and free time, ensuring you see the UNESCO World Heritage Site’s major attractions, like Half Dome, Yosemite Falls, and Yosemite Valley, with the chance to explore more of the park however you wish.",
+  "image": "/images/sanfran3.jpg",
+  "cost": 210,
+  "destination": {
+    "$oid": "69a715bd24c5e09bcee6af95"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69c2b398c2f2a5d0f2deaa48"
+  },
+  "name": "Muir Woods Tour",
+  "description": "Spare yourself the headache of car rental and navigation with round-trip bus transit from San Francisco to Muir Woods. Listen to live commentary during the drive, then explore the park on your own. Next, stop by the scenic seaside town of Sausalito, and stroll independently. Afterwards, relax during your return journey through the Marin Headlands. Upgrade to add on a hop-on hop-off bus tour and enjoy a self-guided Chinatown walking tour.",
+  "image": "/images/sanfran5.jpg",
+  "cost": 84.15,
+  "destination": {
+    "$oid": "69a715bd24c5e09bcee6af95"
+  },
+  "__v": 0
+}]
