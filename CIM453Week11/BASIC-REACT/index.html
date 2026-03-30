@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Link to the react library from unpkg.com -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Link to the Babel library from unpkg.com -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- Important React concepts: Components, Props, State -->
+    <div id="app"></div>
+    <script type="text/jsx">
+      const app = document.getElementById("app");
+      // React Components
+      function Header({ title }) {
+        return <h1> {createTitle(title)} </h1>;
+      }
+      function createTitle(title) {
+        if (title) {
+          return title;
+        } else {
+          return "Default title";
+        }
+      }
+      function Homepage() {
+        return (
+          <>
+            <Header title="Welcome to the homepage" />
+            <Header />
+            <p>This is the homepage</p>
+          </>
+        );
+      }
+
+      const root = ReactDOM.createRoot(app);
+      root.render(<Homepage />);
+    </script>
+  </body>
+</html>
