@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
-const upload = multer(storage);
+const upload = multer({ storage });
 
 //setup db connection
 const mongoose = require("mongoose");
@@ -89,13 +89,9 @@ const activitySchema = new mongoose.Schema({
 });
 
 const Destination = mongoose.model("destinations", destinationSchema);
-
 const Activity = mongoose.model("activities", activitySchema);
-
 const Page = mongoose.model("pages", pageSchema);
-
 const Gallery = mongoose.model("galleries", gallerySchema);
-
 const Image = mongoose.model("images", imageSchema);
 
 async function main() {
@@ -111,7 +107,8 @@ main().catch((err) => console.log(err));
 app.use(express.static(path.join(__dirname, "static")));
 // Parse the body of incoming requests with urlencoded payloads and is based on body-parser. This middleware is used to parse the body of incoming requests and make it available under the req.body property. The extended: true option allows for rich objects and arrays to be encoded into the URL-encoded format, which can be useful for complex data structures.
 app.use(express.urlencoded({ extended: true }));
-// data
+// Parse JSON bodies from API requests
+app.use(express.json());
 // Set up Basic CORS headers for communicating with APIs and accept POST, PUT, DELETE, GET requests from any origin. This middleware is used to set the CORS headers for the responses. The Access-Control-Allow-Origin header allows requests from any origin, and the Access-Control-Allow-Headers header specifies which headers are allowed in the requests.
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin. This should not be used in production without proper security measures in place.
@@ -123,7 +120,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// generate routes
+// =====================
+// ROUTES
+// =====================
+
+// Homepage
 app.get("/", async (req, res) => {
   // Homepage route
   // Find the home page in the database and render it with the title "Welcome to Travel Site"
@@ -132,7 +133,6 @@ app.get("/", async (req, res) => {
   const gallery = await Gallery.findOne({ name: "home" })
     .populate("images")
     .lean();
-
   const destinations = await Destination.find().lean();
   res.render("home", {
     title: homePage.name,
@@ -142,7 +142,41 @@ app.get("/", async (req, res) => {
   });
 });
 
-// generate routes to populate destinations page
+// Destinations - get all
+app.get("/destinations", async (req, res) => {
+  const destinations = await Destination.find().lean();
+  res.render("destinations", {
+    destinations: destinations,
+    title: "Destinations",
+  });
+});
+
+// Destinations - search (must be BEFORE /:id)
+app.get("/destinations/search", async (req, res) => {
+  const { q } = req.query;
+  const destinations = await Destination.find({
+    name: { $regex: q, $options: "i" },
+  }).lean();
+  res.render("destinations", {
+    destinations: destinations,
+    title: "Search Results for: " + q,
+  });
+});
+
+// Destinations - get one by id (must be AFTER /search)
+app.get("/destinations/:id", async (req, res) => {
+  const { id } = req.params;
+  const destination = await Destination.findById(id)
+    .populate("activities")
+    .lean();
+  res.render("details", {
+    destination: destination,
+    title: destination.name,
+    activities: destination.activities,
+  });
+});
+
+// Destinations - create
 app.post("/api/destinations", upload.single("image"), async (req, res) => {
   // code to add a new destination to the database
   const { page, name, description } = req.body;
@@ -152,37 +186,35 @@ app.post("/api/destinations", upload.single("image"), async (req, res) => {
     page,
     name,
     description,
-    image: image.filename ? `/images/${image.filename}` : "/images/default.jpg", // Store the path to the image in the database
+    image: image ? `/images/${image.filename}` : "/images/default.jpg", // Store the path to the image in the database
   });
   await newDestination.save();
-  //res.redirect("/destinations");
   res.send("Destination added successfully");
 });
-// generate routes to display destinations page
-app.get("/destinations", async (req, res) => {
-  // code to fetch destinations from the database and render the destinations page
-  // .lean() is a method in Mongoose that is used to convert a Mongoose document into a plain JavaScript object. When you query the database using Mongoose, it returns a Mongoose document, which has additional methods and properties that are not present in a plain JavaScript object. By calling .lean(), you can get a plain JavaScript object instead of a Mongoose document, which can be more efficient for read-only operations where you don't need the additional functionality provided by Mongoose documents.
-  const destinations = await Destination.find().lean();
-  res.render("destinations", {
-    destinations: destinations,
-    title: "Destinations",
-  });
-});
-// Get a specific destination by _id
-app.get("/destinations/:id", async (req, res) => {
+
+// Destinations - update by id
+app.put("/api/destinations/:id", upload.single("image"), async (req, res) => {
   const { id } = req.params;
-  const destination = await Destination.findById(id)
-    .populate("activities")
-    .lean();
-  //const activities = await Activity.find({ destination: id }).lean();
-  res.render("details", {
-    destination: destination,
-    title: destination.name,
-    activities: destination.activities,
-  });
+  const { page, name, description } = req.body;
+  const image = req.file;
+  const updatedDestination = {
+    page,
+    name,
+    description,
+    ...(image && { image: `/images/${image.filename}` }),
+  };
+  await Destination.findByIdAndUpdate(id, updatedDestination);
+  res.json({ message: "Destination updated successfully" });
 });
 
-// activities routes
+// Destinations - delete by id
+app.delete("/api/destinations/:id", async (req, res) => {
+  const { id } = req.params;
+  await Destination.findByIdAndDelete(id);
+  res.json({ message: "Destination deleted successfully" });
+});
+
+// Activities - create
 app.post("/activities", async (req, res) => {
   const { name, description, image, cost, destination } = req.body;
   const newActivity = new Activity({
@@ -196,7 +228,7 @@ app.post("/activities", async (req, res) => {
   res.send("Activity added successfully");
 });
 
-// Create a new page
+// Pages - create
 app.post("/pages", async (req, res) => {
   const { slug, name, description } = req.body;
   const newPage = new Page({
@@ -207,7 +239,8 @@ app.post("/pages", async (req, res) => {
   await newPage.save();
   res.send("Page added successfully");
 });
-// Create a new gallery
+
+// Galleries - create
 app.post("/galleries", async (req, res) => {
   const { name, description } = req.body;
   const newGallery = new Gallery({
@@ -217,7 +250,8 @@ app.post("/galleries", async (req, res) => {
   await newGallery.save();
   res.send("Gallery added successfully");
 });
-// Create a new image
+
+// Images - create
 app.post("/images", async (req, res) => {
   const { url, caption, gallery } = req.body;
   const newImage = new Image({
@@ -228,18 +262,19 @@ app.post("/images", async (req, res) => {
   await newImage.save();
   res.send("Image added successfully");
 });
-// setup basic api routes
+
+// API - get all destinations
 app.get("/api/destinations", async (req, res) => {
   const destinations = await Destination.find().lean();
   res.json(destinations);
 });
-// Get a specific destination by _id
+
+// API - get one destination by id
 app.get("/api/destinations/:id", async (req, res) => {
   const { id } = req.params;
   const destination = await Destination.findById(id)
     .populate("activities")
     .lean();
-  //const activities = await Activity.find({ destination: id }).lean();
   res.json(destination);
 });
 
